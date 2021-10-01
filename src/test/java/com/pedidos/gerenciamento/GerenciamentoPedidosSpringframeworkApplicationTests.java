@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import org.hamcrest.CoreMatchers;
@@ -22,7 +23,9 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pedidos.gerenciamento.model.Cliente;
+import com.pedidos.gerenciamento.model.Produto;
 import com.pedidos.gerenciamento.service.ClienteService;
+import com.pedidos.gerenciamento.service.ProdutoService;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
@@ -38,6 +41,8 @@ class GerenciamentoPedidosSpringframeworkApplicationTests {
 	private ObjectMapper objectMapper;
 	@Autowired
 	private ClienteService clienteService;
+	@Autowired
+	private ProdutoService produtoService;
 
 	@Test
 	@Order(1)
@@ -86,7 +91,7 @@ class GerenciamentoPedidosSpringframeworkApplicationTests {
 			this.mockMvc
 			.perform(
 					MockMvcRequestBuilders
-						.get("/cliente/{id", 1L)
+						.get("/cliente/{id}", 1L)
 						.contentType(MediaType.APPLICATION_JSON)
 						.accept(MediaType.APPLICATION_JSON)
 					)
@@ -147,6 +152,125 @@ class GerenciamentoPedidosSpringframeworkApplicationTests {
 			.perform(
 						MockMvcRequestBuilders
 							.delete("/cliente/{id}", 3L)
+							.contentType(MediaType.APPLICATION_JSON)
+							.accept(MediaType.APPLICATION_JSON)
+					)
+					.andExpect(MockMvcResultMatchers.status().isNoContent());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	@Order(6)
+	void salvarProdutoControllerTest() {
+		Produto produto1 = Produto.builder()
+				.nome("Arroz")
+				.descricao("Produto Integral")
+				.preco(new BigDecimal("4.80"))
+				.quantidade(10)
+				.build();
+		
+		Produto produto2 = Produto.builder()
+				.nome("Feijão")
+				.descricao("Carioca")
+				.preco(new BigDecimal("3.75"))
+				.quantidade(10)
+				.build();
+		
+		Produto produto3 = Produto.builder()
+								.nome("Macarrão")
+								.descricao("Miojo")
+								.preco(new BigDecimal("1.92"))
+								.quantidade(5)
+								.build();
+		
+		try {
+			this.mockMvc
+			.perform(
+					MockMvcRequestBuilders
+						.post("/produto")
+						.content(objectMapper.writeValueAsString(produto1))
+						.contentType(MediaType.APPLICATION_JSON)
+						.accept(MediaType.APPLICATION_JSON)
+					)
+			.andExpect(MockMvcResultMatchers.status().isCreated())
+			.andExpect(MockMvcResultMatchers.jsonPath("$.id").exists())
+			.andExpect(MockMvcResultMatchers.jsonPath("$.descricao", CoreMatchers.is("Produto Integral")));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		produtoService.createOrUpdate(produto2);
+		produtoService.createOrUpdate(produto3);
+	}
+	
+	@Test
+	@Order(7)
+	void encontrarProdutoPeloIdControllerTest() {
+		try {
+			this.mockMvc
+			.perform(
+					MockMvcRequestBuilders
+						.get("/produto/{id}", 5L)
+						.contentType(MediaType.APPLICATION_JSON)
+						.accept(MediaType.APPLICATION_JSON)
+					)
+			.andExpect(MockMvcResultMatchers.status().isOk())
+			.andExpect(MockMvcResultMatchers.jsonPath("$.descricao", CoreMatchers.is("Carioca")));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	@Order(8)
+	void listarProdutoControllerTest() {
+		try {
+			this.mockMvc
+			.perform(
+					MockMvcRequestBuilders
+						.get("/produtos")
+						.contentType(MediaType.APPLICATION_JSON)
+						.accept(MediaType.APPLICATION_JSON)
+					)
+			.andExpect(MockMvcResultMatchers.status().isOk())
+			.andExpect(MockMvcResultMatchers.jsonPath("$", Matchers.hasSize(3)));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	@Order(9)
+	void atualizarProdutoControllerTest() {
+		Produto produto3 = produtoService.readById(4L);
+		produto3.setDescricao("Parboilizado");
+		
+		try {
+			this.mockMvc
+			.perform(
+					MockMvcRequestBuilders
+						.put("/produto")
+						.content(objectMapper.writeValueAsString(produto3))
+						.contentType(MediaType.APPLICATION_JSON)
+						.accept(MediaType.APPLICATION_JSON)
+					)
+			.andExpect(MockMvcResultMatchers.status().isPartialContent())
+			.andExpect(MockMvcResultMatchers.jsonPath("$.descricao", CoreMatchers.is("Parboilizado")));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Test
+	@Order(10)
+	void deletarProdutoIdControllerTest() {
+		try {
+			this.mockMvc
+			.perform(
+						MockMvcRequestBuilders
+							.delete("/produto/{id}", 6L)
 							.contentType(MediaType.APPLICATION_JSON)
 							.accept(MediaType.APPLICATION_JSON)
 					)
