@@ -14,51 +14,51 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.pedidos.gerenciamento.model.Produto;
-import com.pedidos.gerenciamento.service.ProdutoService;
+import com.pedidos.gerenciamento.model.Pedido;
+import com.pedidos.gerenciamento.service.PedidoService;
 
 import io.swagger.annotations.ApiOperation;
 
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*", methods = { RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT,RequestMethod.DELETE })
-public class ProdutoController {
-
+public class PedidoController {
+	
 	@Autowired
-	private ProdutoService produtoService;
-
-	@PostMapping("/produto")
+	private PedidoService pedidoService;
+	
+	@PostMapping("/pedido")
 	@ResponseStatus(HttpStatus.CREATED)
-	@ApiOperation(value = "Cadastrar um produto")
-	public Produto criar(@RequestBody Produto produto) {
-		return produtoService.createOrUpdate(produto);
+	@ApiOperation(value = "Cadastrar um pedido")
+	public Pedido criar(@RequestBody Pedido pedido) {
+		return pedidoService.createOrUpdate(pedido);
 	}
 
-	@GetMapping("/produto/{id}")
+	@GetMapping("/pedido/{id}")
 	@ResponseStatus(HttpStatus.OK)
-	@ApiOperation(value = "Localizar um Produto")
-	public Produto encontrarPeloId(@PathParam("id") Long id) {
-		return produtoService.readById(id);
+	@ApiOperation(value = "Localizar um pedido pelo id")
+	public Pedido encontrarPeloId(@PathParam("id") Long id) {
+		return pedidoService.readById(id);
 	}
 
-	@GetMapping("/produtos")
+	@GetMapping("/pedidos")
 	@ResponseStatus(HttpStatus.OK)
-	@ApiOperation(value = "Listar todos os produtos")
-	public Iterable<Produto> listarTudo() {
-		return produtoService.readAll();
+	@ApiOperation(value = "Litstar todos os pedidos")
+	public Iterable<Pedido> listarTudo() {
+		return pedidoService.readAll();
 	}
 
-	@PutMapping("/produto")
+	@PutMapping("/pedido")
 	@ResponseStatus(HttpStatus.PARTIAL_CONTENT)
-	@ApiOperation(value = "Atualizar um produto")
-	public Produto atualizar(@RequestBody Produto produto) {
-		return produtoService.createOrUpdate(produto);
+	@ApiOperation(value = "Atualizar um pedido")
+	public Pedido atualizar(@RequestBody Pedido pedido) {
+		return pedidoService.createOrUpdate(pedido);
 	}
 
-	@DeleteMapping("/produto/{id}")
+	@DeleteMapping("/pedido/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	@ApiOperation(value = "Deletar um produto")
+	@ApiOperation(value = "Deletar um pedido")
 	public void deletePeloId(@PathParam("id") Long id) {
-		produtoService.deleteById(id);
+		pedidoService.deleteById(id);
 	}
 
 }
