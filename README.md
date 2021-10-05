@@ -13,4 +13,7 @@ depois use o comando do dockercompose: docker-compose -f docker-compose.yml up
 
 Talvez o baixe dependicias, quando executado na primeira vez.
 
+docker run --name=mysql_server -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=pedido -d mysql:5.7
+docker exec -it nome_mysql_server bash
+
 quando for para a aplicação, rode o comando: docker-compose -f docker-compose.yml down
