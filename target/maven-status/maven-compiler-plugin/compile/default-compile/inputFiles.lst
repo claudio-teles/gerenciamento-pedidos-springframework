@@ -1,0 +1,16 @@
+/home/claudio/Documentos/workspaces/workspaces_eclipse/workspace-sts/gerenciamento-pedidos-springframework/src/main/java/com/pedidos/gerenciamento/GerenciamentoPedidosSpringframeworkApplication.java
+/home/claudio/Documentos/workspaces/workspaces_eclipse/workspace-sts/gerenciamento-pedidos-springframework/src/main/java/com/pedidos/gerenciamento/controller/ProdutoController.java
+/home/claudio/Documentos/workspaces/workspaces_eclipse/workspace-sts/gerenciamento-pedidos-springframework/src/main/java/com/pedidos/gerenciamento/configutation/SwaggerConfig.java
+/home/claudio/Documentos/workspaces/workspaces_eclipse/workspace-sts/gerenciamento-pedidos-springframework/src/main/java/com/pedidos/gerenciamento/controller/PedidoController.java
+/home/claudio/Documentos/workspaces/workspaces_eclipse/workspace-sts/gerenciamento-pedidos-springframework/src/main/java/com/pedidos/gerenciamento/controller/ClienteController.java
+/home/claudio/Documentos/workspaces/workspaces_eclipse/workspace-sts/gerenciamento-pedidos-springframework/src/main/java/com/pedidos/gerenciamento/repository/ProdutoRepository.java
+/home/claudio/Documentos/workspaces/workspaces_eclipse/workspace-sts/gerenciamento-pedidos-springframework/src/main/java/com/pedidos/gerenciamento/configutation/DataSourceMySQLConfig.java
+/home/claudio/Documentos/workspaces/workspaces_eclipse/workspace-sts/gerenciamento-pedidos-springframework/src/main/java/com/pedidos/gerenciamento/model/Cliente.java
+/home/claudio/Documentos/workspaces/workspaces_eclipse/workspace-sts/gerenciamento-pedidos-springframework/src/main/java/com/pedidos/gerenciamento/configutation/DataSourceHSQLDConfig.java
+/home/claudio/Documentos/workspaces/workspaces_eclipse/workspace-sts/gerenciamento-pedidos-springframework/src/main/java/com/pedidos/gerenciamento/service/ClienteService.java
+/home/claudio/Documentos/workspaces/workspaces_eclipse/workspace-sts/gerenciamento-pedidos-springframework/src/main/java/com/pedidos/gerenciamento/service/PedidoService.java
+/home/claudio/Documentos/workspaces/workspaces_eclipse/workspace-sts/gerenciamento-pedidos-springframework/src/main/java/com/pedidos/gerenciamento/repository/PedidoRepository.java
+/home/claudio/Documentos/workspaces/workspaces_eclipse/workspace-sts/gerenciamento-pedidos-springframework/src/main/java/com/pedidos/gerenciamento/model/Pedido.java
+/home/claudio/Documentos/workspaces/workspaces_eclipse/workspace-sts/gerenciamento-pedidos-springframework/src/main/java/com/pedidos/gerenciamento/service/ProdutoService.java
+/home/claudio/Documentos/workspaces/workspaces_eclipse/workspace-sts/gerenciamento-pedidos-springframework/src/main/java/com/pedidos/gerenciamento/model/Produto.java
+/home/claudio/Documentos/workspaces/workspaces_eclipse/workspace-sts/gerenciamento-pedidos-springframework/src/main/java/com/pedidos/gerenciamento/repository/ClienteRepository.java

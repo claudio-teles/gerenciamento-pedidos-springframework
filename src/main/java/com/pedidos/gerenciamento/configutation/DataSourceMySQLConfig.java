@@ -16,8 +16,8 @@ public class DataSourceMySQLConfig {
 		return DataSourceBuilder
 				.create()
 				.username("root")
-				.password("pedido123")
-				.url("jdbc:mysql://localhost:3306/pedido")
+				.password("root")
+				.url("jdbc:mysql://localhost:3306/pedido?autoReconnect=true&useSSL=false")
 				.driverClassName("com.mysql.jdbc.Driver")
 				.build();
 	}

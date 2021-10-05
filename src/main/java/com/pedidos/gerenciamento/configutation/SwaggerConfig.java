@@ -11,13 +11,13 @@ import springfox.documentation.spring.web.plugins.Docket;
 /**
  * @author claudio
  * 
- * http..your-app-root/swagger-ui/index.html
+ * http://localhost:8080/swagger-ui/index.html
  *
  */
 @Configuration
 public class SwaggerConfig {
 	
-    @Bean
+	@Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
