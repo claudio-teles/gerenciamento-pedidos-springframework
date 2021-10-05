@@ -15,7 +15,7 @@
 	<description>Aplicação web responsável por gerenciar clientes, pedidos e produtos.</description>
 	<properties>
 		<java.version>11</java.version>
-		<start-class>com.pedidos.gerenciamento</start-class>
+		<start-class>com.pedidos.gerenciamento.GerenciamentoPedidosSpringframeworkApplication</start-class>
 	</properties>
 	<dependencies>
 		<dependency>

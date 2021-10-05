@@ -2,6 +2,7 @@ Manifest-Version: 1.0
 Build-Jdk-Spec: 16
 Implementation-Title: gerenciamento-pedidos-springframework
 Implementation-Version: 0.0.1
-Main-Class: com.pedidos.gerenciamento
+Main-Class: com.pedidos.gerenciamento.GerenciamentoPedidosSpringframewor
+ kApplication
 Created-By: Maven Integration for Eclipse
 
