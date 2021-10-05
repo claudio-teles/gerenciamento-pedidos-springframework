@@ -5,12 +5,12 @@ Para rodar a aplicação use o comando do maven no diretório raiz do projeto: m
 
 Se for executar no Docker, primeiro construa o executavel .jar na pasta target.
 
-mvn clean package
+mvn clean package -Dmaven.test.skip
+
+Interrompa a sua instalação padrão do MySQL	para não ter conflito na porta: 3306
 
 depois use o comando do dockercompose: docker-compose -f docker-compose.yml up
 
 Talvez o baixe dependicias, quando executado na primeira vez.
 
 quando for para a aplicação, rode o comando: docker-compose -f docker-compose.yml down
-
-
