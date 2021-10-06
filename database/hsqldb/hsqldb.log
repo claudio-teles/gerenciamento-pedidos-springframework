@@ -1,0 +1,18 @@
+/*C1*/SET SCHEMA SYSTEM_LOBS
+INSERT INTO BLOCKS VALUES(0,2147483647,0)
+COMMIT
+/*C2*/SET SCHEMA PUBLIC
+\u000d\u000a    drop table if exists cliente CASCADE 
+\u000d\u000a    drop table if exists pedido CASCADE 
+\u000d\u000a    drop table if exists pedido_produtos CASCADE 
+\u000d\u000a    drop table if exists produto CASCADE 
+\u000d\u000a    drop sequence hibernate_sequence if exists
+create sequence hibernate_sequence start with 1 increment by 1
+\u000d\u000a    create table cliente (\u000d\u000a       id bigint not null,\u000d\u000a        cpf varchar(20),\u000d\u000a        data_de_nascimento date,\u000d\u000a        nome varchar(20),\u000d\u000a        primary key (id)\u000d\u000a    )
+\u000d\u000a    create table pedido (\u000d\u000a       id bigint not null,\u000d\u000a        data_da_compra date,\u000d\u000a        total_da_compra numeric(19,2),\u000d\u000a        cliente_id bigint,\u000d\u000a        primary key (id)\u000d\u000a    )
+\u000d\u000a    create table pedido_produtos (\u000d\u000a       pedido_id bigint not null,\u000d\u000a        produtos_id bigint not null\u000d\u000a    )
+\u000d\u000a    create table produto (\u000d\u000a       id bigint not null,\u000d\u000a        descricao varchar(255),\u000d\u000a        nome varchar(255),\u000d\u000a        preco numeric(19,2),\u000d\u000a        quantidade integer not null,\u000d\u000a        primary key (id)\u000d\u000a    )
+\u000d\u000a    alter table pedido_produtos \u000d\u000a       add constraint UK_a8hwa0ws4mtjhw7oae6dp2b7v unique (produtos_id)
+\u000d\u000a    alter table pedido \u000d\u000a       add constraint um_cliente_esta_associado_a_um_pedido \u000d\u000a       foreign key (cliente_id) \u000d\u000a       references cliente
+\u000d\u000a    alter table pedido_produtos \u000d\u000a       add constraint FKjbeb9e1fpew7efynuggyfyk28 \u000d\u000a       foreign key (produtos_id) \u000d\u000a       references produto
+\u000d\u000a    alter table pedido_produtos \u000d\u000a       add constraint FKjyqoxfuf4ce53ggut07np0rsb \u000d\u000a       foreign key (pedido_id) \u000d\u000a       references pedido
