@@ -3,6 +3,10 @@ Aplicação para gerenciar pedidos
 
 Para rodar a aplicação use o comando do maven no diretório raiz do projeto: mvn spring-boot:run e execute teste api rest na url: http://localhost:8080/swagger-ui/index.html
 
+Se for executar o projeto em modo de teste com HSQLDB, use a propriedade: spring.profiles.active=test
+
+Se for usar o MySQL em modo de produção use as propriedades: spring.profiles.active=prod e spring.jpa.properties.hibernate.default_schema=pedido
+
 Se for executar no Docker, primeiro construa o executavel .jar na pasta target.
 
 mvn clean package -Dmaven.test.skip
