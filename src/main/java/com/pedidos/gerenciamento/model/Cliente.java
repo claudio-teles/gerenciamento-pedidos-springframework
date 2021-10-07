@@ -30,7 +30,7 @@ public class Cliente implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	@Column(length = 20)
+	@Column(length = 30)
 	private String nome;
 	@Column(length = 20)
 	private String cpf;
