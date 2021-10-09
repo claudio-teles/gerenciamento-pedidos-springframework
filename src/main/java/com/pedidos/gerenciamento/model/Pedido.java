@@ -38,7 +38,7 @@ public class Pedido implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	@OneToOne
-	@JoinColumn(foreignKey = @ForeignKey(name = "um_cliente_esta_associado_a_um_pedido"))
+	@JoinColumn(foreignKey = @ForeignKey(name = "um_cliente_esta_associado_a_um_pedido"), unique = false, updatable = true, insertable = true)
 	private Cliente cliente;
 	private BigDecimal totalDaCompra;
 	private LocalDate dataDaCompra;
