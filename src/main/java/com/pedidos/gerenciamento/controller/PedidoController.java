@@ -1,12 +1,11 @@
 package com.pedidos.gerenciamento.controller;
 
-import javax.websocket.server.PathParam;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -36,7 +35,7 @@ public class PedidoController {
 	@GetMapping("/pedido/{id}")
 	@ResponseStatus(HttpStatus.OK)
 	@ApiOperation(value = "Localizar um pedido pelo id")
-	public Pedido encontrarPeloId(@PathParam("id") Long id) {
+	public Pedido encontrarPeloId(@PathVariable("id") Long id) {
 		return pedidoService.readById(id);
 	}
 
@@ -57,7 +56,7 @@ public class PedidoController {
 	@DeleteMapping("/pedido/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	@ApiOperation(value = "Deletar um pedido")
-	public void deletePeloId(@PathParam("id") Long id) {
+	public void deletePeloId(@PathVariable("id") Long id) {
 		pedidoService.deleteById(id);
 	}
 

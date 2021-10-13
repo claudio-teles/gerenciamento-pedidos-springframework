@@ -101,7 +101,7 @@ class GerenciamentoPedidosSpringframeworkApplicationTests {
 						.accept(MediaType.APPLICATION_JSON)
 					)
 			.andExpect(MockMvcResultMatchers.status().isOk())
-			.andExpect(MockMvcResultMatchers.jsonPath("$.nome", CoreMatchers.is("José Alves Feitosa")));
+			.andExpect(MockMvcResultMatchers.jsonPath("$.nome", CoreMatchers.is("Antônio Feitosa Bastos")));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -119,7 +119,7 @@ class GerenciamentoPedidosSpringframeworkApplicationTests {
 						.accept(MediaType.APPLICATION_JSON)
 					)
 			.andExpect(MockMvcResultMatchers.status().isOk())
-			.andExpect(MockMvcResultMatchers.jsonPath("$", Matchers.hasSize(3)));
+			.andExpect(MockMvcResultMatchers.jsonPath("$", Matchers.hasSize(8)));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -222,7 +222,7 @@ class GerenciamentoPedidosSpringframeworkApplicationTests {
 					.accept(MediaType.APPLICATION_JSON)
 					)
 			.andExpect(MockMvcResultMatchers.status().isOk())
-			.andExpect(MockMvcResultMatchers.jsonPath("$.descricao", CoreMatchers.is("Carioca")));
+			.andExpect(MockMvcResultMatchers.jsonPath("$.descricao", CoreMatchers.is("Linguiça De Porco")));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -240,7 +240,7 @@ class GerenciamentoPedidosSpringframeworkApplicationTests {
 					.accept(MediaType.APPLICATION_JSON)
 					)
 			.andExpect(MockMvcResultMatchers.status().isOk())
-			.andExpect(MockMvcResultMatchers.jsonPath("$", Matchers.hasSize(3)));
+			.andExpect(MockMvcResultMatchers.jsonPath("$", Matchers.hasSize(23)));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -372,7 +372,7 @@ class GerenciamentoPedidosSpringframeworkApplicationTests {
 		carrinho.add(produtoService.readById(4L));
 		carrinho.add(produtoService.readById(5L));
 		
-		Pedido pedido3 = pedidoService.readById(9L);
+		Pedido pedido3 = pedidoService.readById(7L);
 		pedido3.setProdutos(carrinho);
 		
 		try {

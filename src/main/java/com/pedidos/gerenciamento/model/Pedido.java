@@ -35,7 +35,7 @@ public class Pedido implements Serializable {
 	private static final long serialVersionUID = -681686626614996814L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@OneToOne
 	@JoinColumn(foreignKey = @ForeignKey(name = "um_cliente_esta_associado_a_um_pedido"), unique = false, updatable = true, insertable = true)
